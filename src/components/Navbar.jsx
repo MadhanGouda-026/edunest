@@ -41,18 +41,21 @@ function Navbar({ tab, setTab }) {
           </button>
         ))}
 
-        <button onClick={() => setTab('admin')} style={{
-          marginLeft: '0.5rem',
-          padding: '0.45rem 1.2rem',
-          borderRadius: '8px',
-          border: '1px solid rgba(124,109,250,0.4)',
-          fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.88rem', fontWeight: 600,
-          background: tab === 'admin' ? 'linear-gradient(135deg,#7c6dfa,#fa6d8f)' : 'transparent',
-          color: tab === 'admin' ? '#fff' : '#7c6dfa',
-          transition: 'all 0.2s',
-        }}>
-          🔐 Admin
-        </button>
+        <div style={{ display: 'flex', gap: '0.25rem', alignItems: 'center' }}>
+          {links.map(l => (
+             <button key={l.id} onClick={() => setTab(l.id)} style={{
+               padding: '0.45rem 1.1rem',
+               borderRadius: '8px', border: 'none',
+               fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.88rem',
+               fontWeight: tab === l.id ? 600 : 400,
+               background: tab === l.id ? 'rgba(124,109,250,0.15)' : 'transparent',
+               color: tab === l.id ? '#7c6dfa' : '#6b6b8a',
+               transition: 'all 0.2s',
+             }}>
+              {l.label}
+             </button>
+         ))}
+        </div>
       </div>
     </nav>
   )
